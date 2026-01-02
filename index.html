@@ -19,22 +19,24 @@ body{
   overflow:hidden;
 }
 
+/* ===== BOOK ===== */
 .book{
-  width:320px;
-  height:480px;
+  width:330px;
+  height:500px;
   position:relative;
-  perspective:2000px;
+  perspective:2200px;
 }
 
+/* ===== PAGE ===== */
 .page{
   width:100%;
   height:100%;
   position:absolute;
   background:#0e2238;
-  border-radius:14px;
+  border-radius:16px;
   transform-origin:left;
   transition:transform 1s ease;
-  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  box-shadow:0 25px 50px rgba(0,0,0,.55);
   overflow:hidden;
 }
 
@@ -42,51 +44,110 @@ body{
   transform:rotateY(-180deg);
 }
 
+/* ===== DECOR ===== */
+.heart{
+  position:absolute;
+  font-size:12px;
+  opacity:.4;
+}
+
+.flower{
+  position:absolute;
+  font-size:14px;
+  opacity:.5;
+}
+
+.tape{
+  position:absolute;
+  width:90px;
+  height:22px;
+  background:rgba(255,255,255,.35);
+  top:8px;
+  left:35%;
+  transform:rotate(-5deg);
+  border-radius:4px;
+}
+
+/* ===== CONTENT ===== */
 .content{
   padding:18px;
   color:#fff;
   font-size:13px;
   line-height:1.65;
+  position:relative;
 }
 
+/* ===== COVER ===== */
 .cover{
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  height:100%;
   text-align:center;
+  height:100%;
 }
 
 .cover h1{
   font-family:'Playfair Display',serif;
-  font-size:30px;
+  font-size:32px;
   margin-bottom:6px;
 }
 
 .cover p{
-  opacity:.8;
+  opacity:.85;
   letter-spacing:1px;
 }
 
+button{
+  margin-top:20px;
+  padding:10px 26px;
+  border:none;
+  border-radius:30px;
+  font-size:13px;
+  cursor:pointer;
+  background:#fff;
+  color:#0b1c2d;
+}
+
+/* ===== PHOTO POLAROID ===== */
 .photo{
   width:100%;
-  border-radius:12px;
-  margin:10px 0;
-  filter:grayscale(100%);
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  border-radius:14px;
+  padding:6px;
+  background:#fff;
+  margin:14px 0;
+  box-shadow:0 14px 30px rgba(0,0,0,.45);
+
+  /* BURAM AWAL */
+  filter: grayscale(100%) blur(7px);
+  opacity:0;
+  transform:scale(0.96);
+  transition:
+    filter 1.4s ease,
+    opacity 1.4s ease,
+    transform 1.4s ease;
 }
 
-.tape{
-  position:absolute;
-  top:8px;
-  left:35%;
-  width:90px;
-  height:22px;
-  background:rgba(255,255,255,.25);
-  transform:rotate(-4deg);
+/* FOTO JADI JELAS */
+.page.flipped .photo{
+  filter: grayscale(0%) blur(0);
+  opacity:1;
+  transform:scale(1);
+  transition-delay:.3s;
 }
 
+/* ===== TEXT TYPE ===== */
+.type{
+  opacity:0;
+  animation:fadeText 1s ease forwards;
+  animation-delay:.8s;
+}
+
+@keyframes fadeText{
+  to{opacity:1}
+}
+
+/* ===== NAV ===== */
 .nav{
   position:fixed;
   bottom:20px;
@@ -94,117 +155,125 @@ body{
   gap:20px;
 }
 
-button{
-  padding:8px 20px;
+.nav button{
+  padding:8px 22px;
   border:none;
   border-radius:20px;
-  cursor:pointer;
   font-size:13px;
-  background:#fff;
-  color:#0b1c2d;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" src="music.mp3"></audio>
+<audio id="music" src="music.mp3" autoplay loop></audio>
 
 <div class="book">
 
-  <!-- COVER -->
-  <div class="page">
-    <div class="content cover">
-      <h1>My Lovely</h1>
-      <p>Sabamejoey</p>
-      <br><br>
-      <button onclick="start()">Buka album</button>
-    </div>
+<!-- COVER -->
+<div class="page">
+  <div class="content cover">
+    <h1>My Lovely</h1>
+    <p>Sabamejoey</p>
+    <button onclick="start()">Buka album</button>
   </div>
+</div>
 
-  <!-- PAGE 1 -->
-  <div class="page">
-    <div class="tape"></div>
-    <div class="content">
-      <img src="foto1.jpg" class="photo">
-      28 september, mulainya kita.  
-      Auric “Ambil aja, hatiku untukmu”
-      <br><br>
-      Sebenarnya aku dari awal udah kecintaan si, no hoax.  
-      Aduh, gugup, first time, jantungku jedag jedug, dug dugg
-    </div>
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:40px;right:30px">🤍</div>
+  <div class="flower" style="bottom:40px;left:20px">🌸</div>
+  <div class="content type">
+    <img src="foto1.jpg" class="photo">
+    28 september, mulainya kita.  
+    Auric “Ambil aja, hatiku untukmu”
+    <br><br>
+    Gugup, first time, jantung jedag jedug.
   </div>
+</div>
 
-  <!-- PAGE 2 -->
-  <div class="page">
-    <div class="content">
-      <img src="foto2.jpg" class="photo">
-      <img src="foto3.jpg" class="photo">
-      Apa ini, kocak, kocak, mentang-mentang seminggu?  
-      Tuhkan, masih nyantol.
-      <br><br>
-      Peletku kuat, buktinya aku buat ini untuk kamu sekarang.  
-      Makasih udah sampai sekarang, cintaku..
-    </div>
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:60px;left:30px">💗</div>
+  <div class="flower" style="bottom:30px;right:20px">🌼</div>
+  <div class="content type">
+    <img src="foto2.jpg" class="photo">
+    <img src="foto3.jpg" class="photo">
+    Kocak, mentang-mentang seminggu?
+    <br><br>
+    Nyantol dong. Peletku kuat.
   </div>
+</div>
 
-  <!-- PAGE 3 -->
-  <div class="page">
-    <div class="content">
-      <img src="foto4.jpg" class="photo">
-      <img src="foto5.jpg" class="photo">
-      Masih malu-malu mau dicium sampai nyuruh aku cium tembok?  
-      Cih, tidak akan. Ada Sabam, aku harus cium Sabam, 24/7.  
-      Sampai dipisah warga. Muah muah.
-      <br><br>
-      Pertama kali spam di rc ku, katanya vibesnya horor.  
-      Lebih horor ga ada aku. Aku Vampir. HA HA HA HA
-    </div>
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:30px;right:40px">💞</div>
+  <div class="flower" style="bottom:50px;left:25px">🌷</div>
+  <div class="content type">
+    <img src="foto4.jpg" class="photo">
+    <img src="foto5.jpg" class="photo">
+    Cium tembok? Tidak berlaku.
+    <br><br>
+    Aku Vampir, pawangnya kamu.
   </div>
+</div>
 
-  <!-- PAGE 4 -->
-  <div class="page">
-    <div class="content">
-      <img src="foto6.jpg" class="photo">
-      <img src="foto7.jpg" class="photo">
-      When.. kamu lucu banget, pakai banget.  
-      Semesta kenapa ga kasih kisi-kisi ada kamu selucu ini sama aku.
-      <br><br>
-      Mohon lucu selalu. Aku maksa.
-    </div>
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:50px;left:40px">💓</div>
+  <div class="flower" style="bottom:40px;right:25px">🌺</div>
+  <div class="content type">
+    <img src="foto6.jpg" class="photo">
+    <img src="foto7.jpg" class="photo">
+    Kamu lucu banget.
+    <br><br>
+    Tolong lucu terus ya.
   </div>
+</div>
 
-  <!-- PAGE 5 -->
-  <div class="page">
-    <div class="content">
-      <img src="foto8.jpg" class="photo">
-      Ga mau ngalah bener soal sayang kamu.  
-      Kalau ga percaya, coba cium aku 500x.
-      <br><br>
-      I love u more cantikku, Bammy.
-    </div>
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:40px;right:35px">🤍</div>
+  <div class="flower" style="bottom:30px;left:30px">🌹</div>
+  <div class="content type">
+    <img src="foto8.jpg" class="photo">
+    Aku sayang kamu banget.
+    <br><br>
+    I love u more, Bammy.
   </div>
+</div>
 
-  <!-- PAGE 6 -->
-  <div class="page">
-    <div class="content">
-      <img src="foto9.jpg" class="photo">
-      Kamu punyaku, aku punyamu.  
-      Ini aku, kamu, menjadi kita.
-    </div>
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="tape"></div>
+  <div class="heart" style="top:40px;left:40px">💗</div>
+  <div class="flower" style="bottom:40px;right:30px">🌸</div>
+  <div class="content type">
+    <img src="foto9.jpg" class="photo">
+    Kamu punyaku.
+    <br>
+    Aku punyamu.
   </div>
+</div>
 
-  <!-- CLOSING -->
-  <div class="page">
-    <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
-      Keliatan kayak ga ada apa-apanya. Tapi ini bikin aku yakin.
-      <br><br>
-      Sayang… Bammy…  
-      Happy New Year 🤍
-      <br><br>
-      <strong>I love you more, Bammy.</strong>
-    </div>
+<!-- LAST -->
+<div class="page">
+  <div class="content type" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+    Happy New Year, Bammy 🤍
+    <br><br>
+    Ini aku dan kamu.
+    <br>
+    Jadi kita.
+    <br><br>
+    <strong>I love you more.</strong>
   </div>
+</div>
 
 </div>
 
@@ -214,16 +283,11 @@ button{
 </div>
 
 <script>
-const pages = document.querySelectorAll('.page');
+let pages = document.querySelectorAll('.page');
 let current = 0;
 
-/* PENTING: ini yang bikin urutan BENAR */
-pages.forEach((page, i) => {
-  page.style.zIndex = pages.length - i;
-});
-
 function start(){
-  document.getElementById('music').play();
+  next();
 }
 
 function next(){
