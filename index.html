@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Lovely — Sabamejoey</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap');
+
+body{
+  margin:0;
+  background:#0b1c2d;
+  font-family:'Poppins',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+.book{
+  width:320px;
+  height:480px;
+  position:relative;
+  perspective:2000px;
+}
+
+.page{
+  width:100%;
+  height:100%;
+  position:absolute;
+  background:#0e2238;
+  border-radius:14px;
+  transform-origin:left;
+  transition:transform 1s ease;
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+
+.page.flipped{
+  transform:rotateY(-180deg);
+}
+
+.content{
+  padding:18px;
+  color:#fff;
+  font-size:13px;
+  line-height:1.65;
+}
+
+.cover{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  text-align:center;
+}
+
+.cover h1{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  margin-bottom:6px;
+}
+
+.cover p{
+  opacity:.8;
+  letter-spacing:1px;
+}
+
+.photo{
+  width:100%;
+  border-radius:12px;
+  margin:10px 0;
+  filter:grayscale(100%);
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.tape{
+  position:absolute;
+  top:8px;
+  left:35%;
+  width:90px;
+  height:22px;
+  background:rgba(255,255,255,.25);
+  transform:rotate(-4deg);
+}
+
+.nav{
+  position:fixed;
+  bottom:20px;
+  display:flex;
+  gap:20px;
+}
+
+button{
+  padding:8px 20px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:13px;
+  background:#fff;
+  color:#0b1c2d;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="music.mp3"></audio>
+
+<div class="book">
+
+  <!-- COVER -->
+  <div class="page">
+    <div class="content cover">
+      <h1>My Lovely</h1>
+      <p>Sabamejoey</p>
+      <br><br>
+      <button onclick="start()">Buka album</button>
+    </div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div class="page">
+    <div class="tape"></div>
+    <div class="content">
+      <img src="foto1.jpg" class="photo">
+      28 september, mulainya kita.  
+      Auric “Ambil aja, hatiku untukmu”
+      <br><br>
+      Sebenarnya aku dari awal udah kecintaan si, no hoax.  
+      Aduh, gugup, first time, jantungku jedag jedug, dug dugg
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="content">
+      <img src="foto2.jpg" class="photo">
+      <img src="foto3.jpg" class="photo">
+      Apa ini, kocak, kocak, mentang-mentang seminggu?  
+      Tuhkan, masih nyantol.
+      <br><br>
+      Peletku kuat, buktinya aku buat ini untuk kamu sekarang.  
+      Makasih udah sampai sekarang, cintaku..
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="content">
+      <img src="foto4.jpg" class="photo">
+      <img src="foto5.jpg" class="photo">
+      Masih malu-malu mau dicium sampai nyuruh aku cium tembok?  
+      Cih, tidak akan. Ada Sabam, aku harus cium Sabam, 24/7.  
+      Sampai dipisah warga. Muah muah.
+      <br><br>
+      Pertama kali spam di rc ku, katanya vibesnya horor.  
+      Lebih horor ga ada aku. Aku Vampir. HA HA HA HA
+    </div>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="content">
+      <img src="foto6.jpg" class="photo">
+      <img src="foto7.jpg" class="photo">
+      When.. kamu lucu banget, pakai banget.  
+      Semesta kenapa ga kasih kisi-kisi ada kamu selucu ini sama aku.
+      <br><br>
+      Mohon lucu selalu. Aku maksa.
+    </div>
+  </div>
+
+  <!-- PAGE 5 -->
+  <div class="page">
+    <div class="content">
+      <img src="foto8.jpg" class="photo">
+      Ga mau ngalah bener soal sayang kamu.  
+      Kalau ga percaya, coba cium aku 500x.
+      <br><br>
+      I love u more cantikku, Bammy.
+    </div>
+  </div>
+
+  <!-- PAGE 6 -->
+  <div class="page">
+    <div class="content">
+      <img src="foto9.jpg" class="photo">
+      Kamu punyaku, aku punyamu.  
+      Ini aku, kamu, menjadi kita.
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="page">
+    <div class="content" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
+      Keliatan kayak ga ada apa-apanya. Tapi ini bikin aku yakin.
+      <br><br>
+      Sayang… Bammy…  
+      Happy New Year 🤍
+      <br><br>
+      <strong>I love you more, Bammy.</strong>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">Prev</button>
+  <button onclick="next()">Next</button>
+</div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+let current = 0;
+
+/* PENTING: ini yang bikin urutan BENAR */
+pages.forEach((page, i) => {
+  page.style.zIndex = pages.length - i;
+});
+
+function start(){
+  document.getElementById('music').play();
+}
+
+function next(){
+  if(current < pages.length){
+    pages[current].classList.add('flipped');
+    current++;
+  }
+}
+
+function prev(){
+  if(current > 0){
+    current--;
+    pages[current].classList.remove('flipped');
+  }
+}
+</script>
+
+</body>
+</html>
